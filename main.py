@@ -9,7 +9,7 @@ if hasattr(ssl, '_create_unverified_context'):
 
 # 巡回したい学術誌のRSSフィード
 JOURNALS = {
-    "Veterinary Quarterly": "https://www.tandfonline.com/action/showFeed?jc=tveq20&type=rss",
+    "Veterinary Quarterly": "https://www.tandfonline.com/feed/rss/tveq20",
     "Journal of Veterinary Internal Medicine (JVIM)": "https://onlinelibrary.wiley.com/feed/19391676/most-recent",
     "Journals of Small Animal Practice": "https://onlinelibrary.wiley.com/feed/17485827/most-recent",
     "Journal of Feline Medicine and Surgery (JFMS)": "https://journals.sagepub.com/action/showFeed?type=etoc&feed=rss&jc=jfm",
