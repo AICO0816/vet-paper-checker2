@@ -1,15 +1,19 @@
 name: Update Latest Papers
 
 on:
-  # 毎日午前5時(UTC)に自動実行 (日本時間の午後2時)
   schedule:
     - cron: '0 5 * * *'
-  # 手動でも実行できるようにする
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    
+    # ■■■■■ ここから追加 ■■■■■
+    permissions:
+      contents: write
+    # ■■■■■ ここまで追加 ■■■■■
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -32,4 +36,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: .
-          # この設定で、同じリポジトリのgh-pagesブランチにHTMLがデプロイされる
