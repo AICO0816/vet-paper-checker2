@@ -11,10 +11,10 @@ if hasattr(ssl, '_create_unverified_context'):
 JOURNALS = {
     "Veterinary Quarterly": "https://www.tandfonline.com/action/showFeed?jc=tveq20&type=rss",
     "Journal of Veterinary Internal Medicine (JVIM)": "https://onlinelibrary.wiley.com/feed/19391676/most-recent",
-    "Veterinary and Comparative Oncology": "https://onlinelibrary.wiley.com/feed/17485827/most-recent",
-    "Journal of Feline Medicine and Surgery (JFMS)": "http://feeds.feedburner.com/Jfm-TheJournalOfFelineMedicineAndSurgery",
-    "American Journal of Veterinary Research (AJVR)": "https://avmajournals.avma.org/rss/journal/ajvr",
-    "Journal of Veterinary Medical Science (JVMS)": "https://www.jstage.jst.go.jp/browse/jvms/_rss/-char/en"
+    "Journals of Small Animal Practice": "https://onlinelibrary.wiley.com/feed/17485827/most-recent",
+    "Journal of Feline Medicine and Surgery (JFMS)": "https://journals.sagepub.com/action/showFeed?type=etoc&feed=rss&jc=jfm",
+    "American Journal of Veterinary Research (AJVR)": "https://avmajournals.avma.org/view/journals/ajvr/ajvr-overview.xml",
+    "Journal of Veterinary Medical Science (JVMS)": "https://www.jstage.jst.go.jp/AF05S010NewRssDld?btnaction=JT0041&sryCd=jvms&rssLang=en"
 }
 
 ARTICLE_COUNT = 5 # 取得したい記事の数
