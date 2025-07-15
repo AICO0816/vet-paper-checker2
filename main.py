@@ -1,8 +1,8 @@
 import feedparser
 import ssl
-from datetime import datetime, date
+from datetime import datetime
 import pytz
-import requests # requestsライブラリをインポート
+import requests
 
 # --- 設定項目 ---
 JOURNALS = {
@@ -17,7 +17,7 @@ JOURNALS = {
     "MDPI Animals": "https://www.mdpi.com/rss/journal/animals"
 }
 ARTICLE_LIMIT = 10
-REQUEST_TIMEOUT = 15 # タイムアウトを15秒に設定
+REQUEST_TIMEOUT = 15
 
 # --- ここから下のプログラムは変更不要です ---
 
@@ -31,33 +31,22 @@ def format_authors(authors):
     return ', '.join(author_names)
 
 def parse_date(entry):
-    if hasattr(entry, 'published_parsed') and entry.published_parsed:
-        return datetime.fromtimestamp(feedparser._parse_date_to_utc(entry.published_parsed))
-    if hasattr(entry, 'updated_parsed') and entry.updated_parsed:
-        return datetime.fromtimestamp(feedparser._parse_date_to_utc(entry.updated_parsed))
+    # 'published_parsed' または 'updated_parsed' から日付を取得
+    date_struct = entry.get('published_parsed') or entry.get('updated_parsed')
+    if date_struct:
+        return datetime.fromtimestamp(feedparser._parse_date_to_utc(date_struct))
     return None
 
 def generate_html():
-    today_utc = datetime.now(pytz.utc).date()
     html_body = ""
     for name, url in JOURNALS.items():
         journal_html = f"<h2><i class='fas fa-paw'></i> {name}</h2>\n<div class='article-list'>\n"
-        todays_articles = []
+        
         try:
-            # --- ここからが変更点 ---
-            # タイムアウト付きでサイトから情報を取得
             headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'}
             response = requests.get(url, timeout=REQUEST_TIMEOUT, headers=headers)
-            response.raise_for_status() # エラーがあればここで例外を発生させる
-            
-            # 取得した内容をfeedparserで解析
+            response.raise_for_status()
             feed = feedparser.parse(response.content)
-            # --- ここまでが変更点 ---
-            
-            for entry in feed.entries:
-                article_date = parse_date(entry)
-                if article_date and article_date.date() == today_utc:
-                    todays_articles.append(entry)
 
         except requests.exceptions.RequestException as e:
             journal_html += f"<div class='article-card error'>フィード取得中にタイムアウトまたはネットワークエラーが発生しました。</div>"
@@ -68,15 +57,18 @@ def generate_html():
             html_body += journal_html + "</div>\n"
             continue
 
-        if not todays_articles:
-            journal_html += "<div class='article-card no-update'>本日更新された論文はありませんでした。</div>"
+        if not feed.entries:
+            journal_html += "<div class='article-card no-update'>新しい論文はありませんでした。</div>"
         else:
-            for entry in todays_articles[:ARTICLE_LIMIT]:
+            # 日付で絞り込まず、最新のものから上限数だけ表示する
+            for entry in feed.entries[:ARTICLE_LIMIT]:
                 title = entry.get('title', 'タイトルなし')
                 link = entry.get('link', '#')
+                
                 published_date_obj = parse_date(entry)
                 published_date_str = published_date_obj.strftime('%Y-%m-%d') if published_date_obj else "日付不明"
                 authors_str = format_authors(entry.get('authors'))
+
                 journal_html += f"""
                 <div class="article-card">
                     <h3><a href="{link}" target="_blank" rel="noopener noreferrer">{title}</a></h3>
@@ -92,9 +84,10 @@ def generate_html():
 
     jst = pytz.timezone('Asia/Tokyo')
     last_updated_str = datetime.now(jst).strftime('%Y-%m-%d %H:%M:%S JST')
+    
     final_html = f"""
     <!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>本日の新着獣医学論文 🐾</title>
+    <title>最新の獣医学論文 🐾</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         :root {{ --bg-color: #f0f8ff; --card-bg-color: #ffffff; --header-color: #4682b4; --text-color: #333333; --link-color: #1e90ff; --meta-color: #5f9ea0; --border-color: #e0ffff; --shadow-color: rgba(0, 0, 0, 0.08); }}
@@ -114,13 +107,14 @@ def generate_html():
         .update-time {{ text-align: right; color: #777; font-size: 0.85em; margin-top: 30px; }}
         .fas {{ color: var(--meta-color); }}
     </style></head><body><div class="container">
-    <h1><i class="fas fa-book-medical"></i> 本日の新着獣医学論文</h1>{html_body}
+    <h1><i class="fas fa-book-medical"></i> 最新の獣医学論文</h1>{html_body}
     <p class="update-time">最終更新: {last_updated_str}</p>
     </div></body></html>
     """
-    with open("index.html", "w", encoding="utf-8") as f: f.write(final_html)
+    
+    with open("index.html", "w", encoding="utf-8") as f:
+        f.write(final_html)
     print("新しいデザインのindex.htmlを生成しました。")
 
 if __name__ == "__main__":
     generate_html()
-
