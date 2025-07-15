@@ -3,7 +3,7 @@ import ssl
 from datetime import datetime
 import pytz
 import requests
-import calendar # calendarライブラリをインポート
+import calendar
 
 # --- 設定項目 ---
 JOURNALS = {
@@ -18,7 +18,8 @@ JOURNALS = {
     "MDPI Animals": "https://www.mdpi.com/rss/journal/animals"
 }
 ARTICLE_LIMIT = 10
-REQUEST_TIMEOUT = 15
+# タイムアウトを15秒から30秒に延長
+REQUEST_TIMEOUT = 30
 
 # --- ここから下のプログラムは変更不要です ---
 
@@ -32,14 +33,10 @@ def format_authors(authors):
     return ', '.join(author_names)
 
 def parse_date(entry):
-    # 'published_parsed' または 'updated_parsed' から日付を取得
     date_struct = entry.get('published_parsed') or entry.get('updated_parsed')
     if date_struct:
-        # --- ここからが変更点 ---
-        # time.struct_timeをUTCタイムスタンプに変換し、datetimeオブジェクトを作成
         timestamp = calendar.timegm(date_struct)
         return datetime.fromtimestamp(timestamp, tz=pytz.utc)
-        # --- ここまでが変更点 ---
     return None
 
 def generate_html():
