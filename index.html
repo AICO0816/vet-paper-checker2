@@ -4,67 +4,111 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>最新獣医学論文リスト</title>
+        <title>本日の新着獣医学論文 🐾</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         <style>
-            body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; margin: 20px; background-color: #f9f9f9; color: #333; }
-            .container { max-width: 800px; margin: auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-            h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
-            h2 { color: #34495e; margin-top: 40px; border-left: 5px solid #3498db; padding-left: 10px; }
-            ul { list-style-type: none; padding-left: 0; }
-            li { background: #ecf0f1; margin-bottom: 10px; padding: 15px; border-radius: 5px; }
-            a { color: #2980b9; text-decoration: none; font-weight: bold; }
-            a:hover { text-decoration: underline; }
-            .update-time { text-align: right; color: #7f8c8d; font-size: 0.9em; }
+            :root {
+                --bg-color: #f0f8ff; /* AliceBlue */
+                --card-bg-color: #ffffff;
+                --header-color: #4682b4; /* SteelBlue */
+                --text-color: #333333;
+                --link-color: #1e90ff; /* DodgerBlue */
+                --meta-color: #5f9ea0; /* CadetBlue */
+                --border-color: #e0ffff; /* LightCyan */
+                --shadow-color: rgba(0, 0, 0, 0.08);
+            }
+            body {
+                font-family: 'Helvetica Neue', 'Arial', 'Hiragino Sans', 'Meiryo', sans-serif;
+                line-height: 1.7;
+                margin: 0;
+                padding: 20px;
+                background-color: var(--bg-color);
+                color: var(--text-color);
+            }
+            .container {
+                max-width: 900px;
+                margin: auto;
+                background: var(--card-bg-color);
+                padding: 20px 30px;
+                border-radius: 12px;
+                box-shadow: 0 4px 12px var(--shadow-color);
+            }
+            h1 {
+                color: var(--header-color);
+                border-bottom: 3px solid var(--border-color);
+                padding-bottom: 15px;
+                text-align: center;
+                font-size: 2em;
+            }
+            h2 {
+                color: var(--header-color);
+                margin-top: 40px;
+                border-left: 6px solid var(--link-color);
+                padding-left: 12px;
+                font-size: 1.5em;
+            }
+            .article-list {
+                display: grid;
+                gap: 15px;
+            }
+            .article-card {
+                background: #fafffe;
+                border: 1px solid var(--border-color);
+                padding: 20px;
+                border-radius: 8px;
+                transition: transform 0.2s, box-shadow 0.2s;
+            }
+            .article-card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 6px 15px var(--shadow-color);
+            }
+            .article-card h3 {
+                margin-top: 0;
+                margin-bottom: 12px;
+                font-size: 1.1em;
+            }
+            .article-card h3 a {
+                color: var(--link-color);
+                text-decoration: none;
+                font-weight: 600;
+            }
+            .article-card h3 a:hover {
+                text-decoration: underline;
+            }
+            .metadata {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px 20px;
+                font-size: 0.9em;
+                color: var(--meta-color);
+            }
+            .metadata span i {
+                margin-right: 6px;
+            }
+            .no-update, .error {
+                text-align: center;
+                color: #888;
+                padding: 20px;
+            }
+            .update-time {
+                text-align: right;
+                color: #777;
+                font-size: 0.85em;
+                margin-top: 30px;
+            }
+            .fas {
+                color: var(--meta-color);
+            }
         </style>
     </head>
     <body>
         <div class="container">
-            <h1>最新獣医学論文リスト</h1>
-    <h2>Veterinary Quarterly</h2>
-<ul>
-<li><a href="https://www.tandfonline.com/doi/full/10.1080/01652176.2024.2447592?af=R" target="_blank" rel="noopener noreferrer">Supplemental glucose oxidase as an antibiotic substitute alleviates diarrhea and improves intestinal health in weaned piglets</a></li>
-<li><a href="https://www.tandfonline.com/doi/full/10.1080/01652176.2025.2486771?af=R" target="_blank" rel="noopener noreferrer">Raman spectral band imaging for the diagnostics and classification of canine and feline cutaneous tumors</a></li>
-<li><a href="https://www.tandfonline.com/doi/full/10.1080/01652176.2025.2488025?af=R" target="_blank" rel="noopener noreferrer">PCR testing of conjunctival swabs to detect feline leukaemia virus in domestic cats in Thailand</a></li>
-<li><a href="https://www.tandfonline.com/doi/full/10.1080/01652176.2025.2498915?af=R" target="_blank" rel="noopener noreferrer">Effects of oral black Maca (Lepidium meyenii) supplementation on semen quality and refrigerated storage stability in subfertile and normofertile dogs: a study on sperm parameters and testosterone levels</a></li>
-<li><a href="https://www.tandfonline.com/doi/full/10.1080/01652176.2025.2513965?af=R" target="_blank" rel="noopener noreferrer">Perioperative drug management in non-critical companion animals: a retrospective study at a Spanish veterinary teaching hospital (2018–2022)</a></li>
-</ul>
-<h2>Journal of Veterinary Internal Medicine (JVIM)</h2>
-<ul>
-<li><a href="https://onlinelibrary.wiley.com/doi/10.1111/jvim.70173?af=R" target="_blank" rel="noopener noreferrer">An e‐Reporting Tool for Facilitating Submission of Veterinary Adverse Drug Reaction Reports</a></li>
-<li><a href="https://onlinelibrary.wiley.com/doi/10.1111/jvim.70170?af=R" target="_blank" rel="noopener noreferrer">Metabolic Alterations Associated With Rapidly Progressive Chronic Kidney Disease in Cats</a></li>
-<li><a href="https://onlinelibrary.wiley.com/doi/10.1111/jvim.70166?af=R" target="_blank" rel="noopener noreferrer">Exploring the Importance of Repeated Health Screening in Healthy Older Dogs</a></li>
-<li><a href="https://onlinelibrary.wiley.com/doi/10.1111/jvim.70179?af=R" target="_blank" rel="noopener noreferrer">Safety, Efficacy and Doxorubicin Pharmacokinetics During Cannabidiol/Cannabidiolic Acid Rich Hemp Oil Use in Dogs With Lymphoma Undergoing CHOP Chemotherapy</a></li>
-<li><a href="https://onlinelibrary.wiley.com/doi/10.1111/jvim.70185?af=R" target="_blank" rel="noopener noreferrer">A CNTNAP1 Missense Variant Associated With Laryngeal Paralysis and Polyneuropathy in Young Great Dane Dogs</a></li>
-</ul>
-<h2>Journals of Small Animal Practice</h2>
-<ul>
-<li><a href="https://onlinelibrary.wiley.com/doi/10.1111/jsap.13904?af=R" target="_blank" rel="noopener noreferrer">Long‐term outcome of ultrasound‐guided retrieval of subcutaneous foreign bodies in 32 dogs (2015–2022)</a></li>
-<li><a href="https://onlinelibrary.wiley.com/doi/10.1111/jsap.13894?af=R" target="_blank" rel="noopener noreferrer">When – and whether – should we spay/neuter companion dogs</a></li>
-<li><a href="https://onlinelibrary.wiley.com/doi/10.1111/jsap.13914?af=R" target="_blank" rel="noopener noreferrer">Outcome of lip‐to‐lid subdermal plexus flaps to reconstruct defects of the lower eyelid in dogs and cats: 46 cases (2005‐2022)</a></li>
-<li><a href="https://onlinelibrary.wiley.com/doi/10.1111/jsap.13909?af=R" target="_blank" rel="noopener noreferrer">Elbow arthrodesis in five Spaniel breed dogs as a salvage procedure for chronic humeral condylar fractures</a></li>
-<li><a href="https://onlinelibrary.wiley.com/doi/10.1111/jsap.13848?af=R" target="_blank" rel="noopener noreferrer">Multiple pathological bone fractures in a dog with adrenal‐dependent Cushing's syndrome</a></li>
-</ul>
-<h2>Journal of Feline Medicine and Surgery (JFMS)</h2>
-<ul>
-<li><a href="https://journals.sagepub.com/doi/abs/10.1177/1098612X251336702?af=R" target="_blank" rel="noopener noreferrer">Percutaneous cholecystostomy drain placement in cats: feasibility and safety of an ultrasound- and fluoroscopy-guided method</a></li>
-<li><a href="https://journals.sagepub.com/doi/abs/10.1177/1098612X251341539?af=R" target="_blank" rel="noopener noreferrer">Prevalence of hypocobalaminaemia and hypercobalaminaemia in a referral population of cats in the UK and its relevance to clinical presentation, diagnosis and prognosis</a></li>
-<li><a href="https://journals.sagepub.com/doi/abs/10.1177/1098612X251314710?af=R" target="_blank" rel="noopener noreferrer">Exposure of urine of domestic cats to different substrates: impact on urine specific gravity</a></li>
-<li><a href="https://journals.sagepub.com/doi/abs/10.1177/1098612X251334558?af=R" target="_blank" rel="noopener noreferrer">Physical rehabilitation of cats: 1. Common conditions benefiting from physiotherapy</a></li>
-<li><a href="https://journals.sagepub.com/doi/abs/10.1177/1098612X251334555?af=R" target="_blank" rel="noopener noreferrer">Physical rehabilitation of cats: 2. Treatment therapies and exercises</a></li>
-</ul>
-<h2>American Journal of Veterinary Research (AJVR)</h2>
-<ul>
-<li>記事を取得できませんでした。</li>
-</ul>
-<h2>Journal of Veterinary Medical Science (JVMS)</h2>
-<ul>
-<li><a href="http://www.jstage.jst.go.jp/browse/jvms/" target="_blank" rel="noopener noreferrer">The new article is now available. Journal of Veterinary Medical Science</a></li>
-<li><a href="http://www.jstage.jst.go.jp/browse/jvms/" target="_blank" rel="noopener noreferrer">The new article is now available. Journal of Veterinary Medical Science</a></li>
-<li><a href="http://www.jstage.jst.go.jp/browse/jvms/" target="_blank" rel="noopener noreferrer">The new article is now available. Journal of Veterinary Medical Science</a></li>
-<li><a href="http://www.jstage.jst.go.jp/browse/jvms/" target="_blank" rel="noopener noreferrer">The new article is now available. Journal of Veterinary Medical Science</a></li>
-<li><a href="http://www.jstage.jst.go.jp/browse/jvms/" target="_blank" rel="noopener noreferrer">The new article is now available. Journal of Veterinary Medical Science</a></li>
-</ul>
-<p class="update-time">最終更新: 2025-07-15 14:52:26 JST</p>
+            <h1><i class="fas fa-book-medical"></i> 本日の新着獣医学論文</h1>
+            <h2><i class='fas fa-paw'></i> Veterinary Quarterly</h2>
+<div class='article-list'>
+<div class='article-card no-update'>本日更新された論文はありませんでした。</div></div>
+
+            <p class="update-time">最終更新: 2025-07-15 17:56:33 JST</p>
         </div>
     </body>
     </html>
