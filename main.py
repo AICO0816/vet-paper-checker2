@@ -9,10 +9,10 @@ import calendar
 JOURNALS = {
     "Veterinary Quarterly": "https://www.tandfonline.com/action/showFeed?jc=tveq20&type=rss",
     "Journal of Veterinary Internal Medicine": "https://onlinelibrary.wiley.com/feed/19391676/most-recent",
-    "Veterinary and Comparative Oncology": "https://onlinelibrary.wiley.com/feed/17485827/most-recent",
+    "Journal of Small Animal Practice": "https://onlinelibrary.wiley.com/feed/17485827/most-recent",
     "Journal of Feline Medicine and Surgery": "http://feeds.feedburner.com/Jfm-TheJournalOfFelineMedicineAndSurgery",
     "American Journal of Veterinary Research": "https://avmajournals.avma.org/rss/journal/ajvr",
-    "Journal of Veterinary Medical Science": "https://www.jstage.jst.go.jp/browse/jvms/_rss/-char/en",
+    "Journal of Veterinary Medical Science": "https://www.jstage.jst.go.jp/AF05S010NewRssDld?btnaction=JT0041&sryCd=jvms&rssLang=en",
     "Open Veterinary Journal": "https://www.openveterinaryjournal.com/feed/",
     "Frontiers in Veterinary Science": "https://www.frontiersin.org/journals/veterinary-science/rss",
     "MDPI Animals": "https://www.mdpi.com/rss/journal/animals"
