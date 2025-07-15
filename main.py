@@ -11,7 +11,7 @@ JOURNALS = {
     "Journal of Veterinary Internal Medicine": "https://onlinelibrary.wiley.com/feed/19391676/most-recent",
     "Jorunal of Small Animal Practice": "https://onlinelibrary.wiley.com/feed/17485827/most-recent",
     # ↓↓↓ ここのURLを修正しました ↓↓↓
-    "Journal of Feline Medicine and Surgery": "https://journals.sagepub.com/action/showFeed?type=prepub&feed=rss&jc=jfm",
+    "Journal of Feline Medicine and Surgery": "https://journals.sagepub.com/action/showFeed?type=etoc&feed=rss&jc=jfm",
     "American Journal of Veterinary Research": "https://avmajournals.avma.org/rss/journal/ajvr",
     "Journal of Veterinary Medical Science": "https://www.jstage.jst.go.jp/AF05S010NewRssDld?btnaction=JT0041&sryCd=jvms&rssLang=en",
     "Open Veterinary Journal": "https://www.ajol.info/index.php/ovj/gateway/plugin/WebFeedGatewayPlugin/rss?utm_source=chatgpt.com",
