@@ -14,7 +14,7 @@ JOURNALS = {
     "Journal of Feline Medicine and Surgery": "https://journals.sagepub.com/action/showFeed?type=prepub&feed=rss&jc=jfm",
     "American Journal of Veterinary Research": "https://avmajournals.avma.org/rss/journal/ajvr",
     "Journal of Veterinary Medical Science": "https://www.jstage.jst.go.jp/AF05S010NewRssDld?btnaction=JT0041&sryCd=jvms&rssLang=en",
-    "Open Veterinary Journal": "https://www.openveterinaryjournal.com/feed/",
+    "Open Veterinary Journal": "https://www.ajol.info/index.php/ovj/gateway/plugin/WebFeedGatewayPlugin/rss?utm_source=chatgpt.com",
     "Frontiers in Veterinary Science": "https://www.frontiersin.org/journals/veterinary-science/rss",
     "MDPI Animals": "https://www.mdpi.com/rss/journal/animals"
 }
