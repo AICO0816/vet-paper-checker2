@@ -3,6 +3,7 @@ import ssl
 from datetime import datetime
 import pytz
 import requests
+import calendar # calendarライブラリをインポート
 
 # --- 設定項目 ---
 JOURNALS = {
@@ -34,7 +35,11 @@ def parse_date(entry):
     # 'published_parsed' または 'updated_parsed' から日付を取得
     date_struct = entry.get('published_parsed') or entry.get('updated_parsed')
     if date_struct:
-        return datetime.fromtimestamp(feedparser._parse_date_to_utc(date_struct))
+        # --- ここからが変更点 ---
+        # time.struct_timeをUTCタイムスタンプに変換し、datetimeオブジェクトを作成
+        timestamp = calendar.timegm(date_struct)
+        return datetime.fromtimestamp(timestamp, tz=pytz.utc)
+        # --- ここまでが変更点 ---
     return None
 
 def generate_html():
@@ -60,20 +65,19 @@ def generate_html():
         if not feed.entries:
             journal_html += "<div class='article-card no-update'>新しい論文はありませんでした。</div>"
         else:
-            # 日付で絞り込まず、最新のものから上限数だけ表示する
             for entry in feed.entries[:ARTICLE_LIMIT]:
                 title = entry.get('title', 'タイトルなし')
                 link = entry.get('link', '#')
                 
                 published_date_obj = parse_date(entry)
-                published_date_str = published_date_obj.strftime('%Y-%m-%d') if published_date_obj else "日付不明"
+                published_date_str = published_date_obj.astimezone(pytz.timezone('Asia/Tokyo')).strftime('%Y-%m-%d %H:%M') if published_date_obj else "日付不明"
                 authors_str = format_authors(entry.get('authors'))
 
                 journal_html += f"""
                 <div class="article-card">
                     <h3><a href="{link}" target="_blank" rel="noopener noreferrer">{title}</a></h3>
                     <div class="metadata">
-                        <span class="date"><i class="fas fa-calendar-alt"></i> {published_date_str}</span>
+                        <span class="date"><i class="fas fa-calendar-alt"></i> {published_date_str} JST</span>
                         <span class="authors"><i class="fas fa-user-edit"></i> {authors_str}</span>
                     </div>
                 </div>
@@ -118,3 +122,4 @@ def generate_html():
 
 if __name__ == "__main__":
     generate_html()
+
