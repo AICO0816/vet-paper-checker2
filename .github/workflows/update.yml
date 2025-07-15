@@ -8,11 +8,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
-    # ■■■■■ ここから追加 ■■■■■
+
     permissions:
       contents: write
-    # ■■■■■ ここまで追加 ■■■■■
 
     steps:
       - name: Checkout repository
@@ -26,7 +24,8 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install feedparser pytz
+          # ここにrequestsを追加しました
+          pip install feedparser pytz requests
 
       - name: Run script to generate HTML
         run: python main.py
