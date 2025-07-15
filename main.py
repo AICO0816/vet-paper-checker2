@@ -16,7 +16,7 @@ JOURNALS = {
     "Journal of Veterinary Medical Science": "https://www.jstage.jst.go.jp/AF05S010NewRssDld?btnaction=JT0041&sryCd=jvms&rssLang=en",
     "Open Veterinary Journal": "https://www.openveterinaryjournal.com/feed/",
     "Frontiers in Veterinary Science": "https://www.frontiersin.org/journals/veterinary-science/rss",
-    "MDPI Animals": "https://www.mdpi.com/rss/journal/animals.xml"
+    "MDPI Animals": "https://www.mdpi.com/rss/journal/animals"
 }
 ARTICLE_LIMIT = 10
 REQUEST_TIMEOUT = 30
