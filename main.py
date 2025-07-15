@@ -9,8 +9,9 @@ import calendar
 JOURNALS = {
     "Veterinary Quarterly": "https://www.tandfonline.com/action/showFeed?jc=tveq20&type=rss",
     "Journal of Veterinary Internal Medicine": "https://onlinelibrary.wiley.com/feed/19391676/most-recent",
-    "Journal of Small Animal Practice": "https://onlinelibrary.wiley.com/feed/17485827/most-recent",
-    "Journal of Feline Medicine and Surgery": "http://feeds.feedburner.com/Jfm-TheJournalOfFelineMedicineAndSurgery",
+    "Jorunal of Small Animal Practice": "https://onlinelibrary.wiley.com/feed/17485827/most-recent",
+    # ↓↓↓ ここのURLを修正しました ↓↓↓
+    "Journal of Feline Medicine and Surgery": "https://journals.sagepub.com/action/showFeed?jc=jfm&type=rss",
     "American Journal of Veterinary Research": "https://avmajournals.avma.org/rss/journal/ajvr",
     "Journal of Veterinary Medical Science": "https://www.jstage.jst.go.jp/AF05S010NewRssDld?btnaction=JT0041&sryCd=jvms&rssLang=en",
     "Open Veterinary Journal": "https://www.openveterinaryjournal.com/feed/",
@@ -18,7 +19,6 @@ JOURNALS = {
     "MDPI Animals": "https://www.mdpi.com/rss/journal/animals"
 }
 ARTICLE_LIMIT = 10
-# タイムアウトを15秒から30秒に延長
 REQUEST_TIMEOUT = 30
 
 # --- ここから下のプログラムは変更不要です ---
