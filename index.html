@@ -1,115 +1,53 @@
 
-    <!DOCTYPE html>
-    <html lang="ja">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>本日の新着獣医学論文 🐾</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-        <style>
-            :root {
-                --bg-color: #f0f8ff; /* AliceBlue */
-                --card-bg-color: #ffffff;
-                --header-color: #4682b4; /* SteelBlue */
-                --text-color: #333333;
-                --link-color: #1e90ff; /* DodgerBlue */
-                --meta-color: #5f9ea0; /* CadetBlue */
-                --border-color: #e0ffff; /* LightCyan */
-                --shadow-color: rgba(0, 0, 0, 0.08);
-            }
-            body {
-                font-family: 'Helvetica Neue', 'Arial', 'Hiragino Sans', 'Meiryo', sans-serif;
-                line-height: 1.7;
-                margin: 0;
-                padding: 20px;
-                background-color: var(--bg-color);
-                color: var(--text-color);
-            }
-            .container {
-                max-width: 900px;
-                margin: auto;
-                background: var(--card-bg-color);
-                padding: 20px 30px;
-                border-radius: 12px;
-                box-shadow: 0 4px 12px var(--shadow-color);
-            }
-            h1 {
-                color: var(--header-color);
-                border-bottom: 3px solid var(--border-color);
-                padding-bottom: 15px;
-                text-align: center;
-                font-size: 2em;
-            }
-            h2 {
-                color: var(--header-color);
-                margin-top: 40px;
-                border-left: 6px solid var(--link-color);
-                padding-left: 12px;
-                font-size: 1.5em;
-            }
-            .article-list {
-                display: grid;
-                gap: 15px;
-            }
-            .article-card {
-                background: #fafffe;
-                border: 1px solid var(--border-color);
-                padding: 20px;
-                border-radius: 8px;
-                transition: transform 0.2s, box-shadow 0.2s;
-            }
-            .article-card:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 6px 15px var(--shadow-color);
-            }
-            .article-card h3 {
-                margin-top: 0;
-                margin-bottom: 12px;
-                font-size: 1.1em;
-            }
-            .article-card h3 a {
-                color: var(--link-color);
-                text-decoration: none;
-                font-weight: 600;
-            }
-            .article-card h3 a:hover {
-                text-decoration: underline;
-            }
-            .metadata {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 8px 20px;
-                font-size: 0.9em;
-                color: var(--meta-color);
-            }
-            .metadata span i {
-                margin-right: 6px;
-            }
-            .no-update, .error {
-                text-align: center;
-                color: #888;
-                padding: 20px;
-            }
-            .update-time {
-                text-align: right;
-                color: #777;
-                font-size: 0.85em;
-                margin-top: 30px;
-            }
-            .fas {
-                color: var(--meta-color);
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <h1><i class="fas fa-book-medical"></i> 本日の新着獣医学論文</h1>
-            <h2><i class='fas fa-paw'></i> Veterinary Quarterly</h2>
+    <!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>本日の新着獣医学論文 🐾</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        :root { --bg-color: #f0f8ff; --card-bg-color: #ffffff; --header-color: #4682b4; --text-color: #333333; --link-color: #1e90ff; --meta-color: #5f9ea0; --border-color: #e0ffff; --shadow-color: rgba(0, 0, 0, 0.08); }
+        body { font-family: 'Helvetica Neue', 'Arial', 'Hiragino Sans', 'Meiryo', sans-serif; line-height: 1.7; margin: 0; padding: 20px; background-color: var(--bg-color); color: var(--text-color); }
+        .container { max-width: 900px; margin: auto; background: var(--card-bg-color); padding: 20px 30px; border-radius: 12px; box-shadow: 0 4px 12px var(--shadow-color); }
+        h1 { color: var(--header-color); border-bottom: 3px solid var(--border-color); padding-bottom: 15px; text-align: center; font-size: 2em; }
+        h2 { color: var(--header-color); margin-top: 40px; border-left: 6px solid var(--link-color); padding-left: 12px; font-size: 1.5em; }
+        .article-list { display: grid; gap: 15px; }
+        .article-card { background: #fafffe; border: 1px solid var(--border-color); padding: 20px; border-radius: 8px; transition: transform 0.2s, box-shadow 0.2s; }
+        .article-card:hover { transform: translateY(-3px); box-shadow: 0 6px 15px var(--shadow-color); }
+        .article-card h3 { margin-top: 0; margin-bottom: 12px; font-size: 1.1em; }
+        .article-card h3 a { color: var(--link-color); text-decoration: none; font-weight: 600; }
+        .article-card h3 a:hover { text-decoration: underline; }
+        .metadata { display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 0.9em; color: var(--meta-color); }
+        .metadata span i { margin-right: 6px; }
+        .no-update, .error { text-align: center; color: #888; padding: 20px; }
+        .update-time { text-align: right; color: #777; font-size: 0.85em; margin-top: 30px; }
+        .fas { color: var(--meta-color); }
+    </style></head><body><div class="container">
+    <h1><i class="fas fa-book-medical"></i> 本日の新着獣医学論文</h1><h2><i class='fas fa-paw'></i> Veterinary Quarterly</h2>
 <div class='article-list'>
 <div class='article-card no-update'>本日更新された論文はありませんでした。</div></div>
+<h2><i class='fas fa-paw'></i> Journal of Veterinary Internal Medicine</h2>
+<div class='article-list'>
+<div class='article-card error'>予期せぬエラーが発生しました: module 'feedparser' has no attribute '_parse_date_to_utc'</div></div>
+<h2><i class='fas fa-paw'></i> Veterinary and Comparative Oncology</h2>
+<div class='article-list'>
+<div class='article-card error'>予期せぬエラーが発生しました: module 'feedparser' has no attribute '_parse_date_to_utc'</div></div>
+<h2><i class='fas fa-paw'></i> Journal of Feline Medicine and Surgery</h2>
+<div class='article-list'>
+<div class='article-card error'>フィード取得中にタイムアウトまたはネットワークエラーが発生しました。</div></div>
+<h2><i class='fas fa-paw'></i> American Journal of Veterinary Research</h2>
+<div class='article-list'>
+<div class='article-card no-update'>本日更新された論文はありませんでした。</div></div>
+<h2><i class='fas fa-paw'></i> Journal of Veterinary Medical Science</h2>
+<div class='article-list'>
+<div class='article-card error'>フィード取得中にタイムアウトまたはネットワークエラーが発生しました。</div></div>
+<h2><i class='fas fa-paw'></i> Open Veterinary Journal</h2>
+<div class='article-list'>
+<div class='article-card error'>フィード取得中にタイムアウトまたはネットワークエラーが発生しました。</div></div>
+<h2><i class='fas fa-paw'></i> Frontiers in Veterinary Science</h2>
+<div class='article-list'>
+<div class='article-card error'>予期せぬエラーが発生しました: module 'feedparser' has no attribute '_parse_date_to_utc'</div></div>
+<h2><i class='fas fa-paw'></i> MDPI Animals</h2>
+<div class='article-list'>
+<div class='article-card error'>フィード取得中にタイムアウトまたはネットワークエラーが発生しました。</div></div>
 
-            <p class="update-time">最終更新: 2025-07-15 18:14:50 JST</p>
-        </div>
-    </body>
-    </html>
+    <p class="update-time">最終更新: 2025-07-15 18:22:47 JST</p>
+    </div></body></html>
     
