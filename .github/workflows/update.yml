@@ -1,63 +1,38 @@
-name: Update Veterinary Papers
+name: Update Latest Papers
 
 on:
   schedule:
-    - cron: '0 9 * * *'  # 毎日日本時間18時（UTC 9時）に実行
-  workflow_dispatch:  # 手動実行を許可
+    - cron: '0 5 * * *'
+  workflow_dispatch:
 
 jobs:
-  update-papers:
+  build:
     runs-on: ubuntu-latest
-    timeout-minutes: 30  # タイムアウト時間を設定
     
+    # ■■■■■ ここから追加 ■■■■■
+    permissions:
+      contents: write
+    # ■■■■■ ここまで追加 ■■■■■
+
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-    
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.11'
-        cache: 'pip'
-    
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install feedparser requests pytz
-    
-    - name: Run paper scraper
-      run: |
-        python paper_scraper.py
-      timeout-minutes: 25  # スクリプト実行のタイムアウト
-    
-    - name: Check if HTML file was created
-      run: |
-        if [ -f "index.html" ]; then
-          echo "index.html created successfully"
-          ls -la index.html
-        else
-          echo "Error: index.html was not created"
-          exit 1
-        fi
-    
-    - name: Commit and push changes
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add index.html
-        if git diff --staged --quiet; then
-          echo "No changes to commit"
-        else
-          git commit -m "Update veterinary papers $(date '+%Y-%m-%d %H:%M:%S')"
-          git push
-        fi
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    
-    - name: Upload HTML as artifact (for debugging)
-      uses: actions/upload-artifact@v4
-      if: always()  # 成功・失敗に関わらず実行
-      with:
-        name: generated-html
-        path: index.html
-        retention-days: 5
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install feedparser pytz
+
+      - name: Run script to generate HTML
+        run: python main.py
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
